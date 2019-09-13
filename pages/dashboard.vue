@@ -40,8 +40,15 @@ export default {
   },
   methods: {
     async create() {
-      await this.$axios.$post("/topics", this.form);
-      this.$route.push("/");
+      await this.$axios
+        .$post("/topics", this.form)
+        .then(data => {
+          console.log(data);
+          this.$router.push("/");
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

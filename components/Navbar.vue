@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
     <nuxt-link to="/" class="navbar-brand">FrontEnd</nuxt-link>
     <button
       class="navbar-toggler"
@@ -16,6 +16,9 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <nuxt-link to="/" class="nav-link">Home</nuxt-link>
+        </li>
+        <li class="nav-item active">
+          <nuxt-link to="/topics" class="nav-link">Topics</nuxt-link>
         </li>
         <li class="nav-item">
           <nuxt-link to="/dashboard" class="nav-link">Create</nuxt-link>
