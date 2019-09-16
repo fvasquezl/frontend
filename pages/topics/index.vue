@@ -12,6 +12,11 @@
       </h2>
       <div v-if="authenticated">
         <div v-if="user.id === topic.user.id">
+          <button
+            @click="deleteTopic(topic.id)"
+            class="btn btn-outline-danger fa fa-trash-alt fa-2x float-right"
+          ></button>
+
           <nuxt-link :to="{name: 'topics-edit',params:{id: topic.id}}">
             <button class="btn btn-outline-success fa fa-edit fa-2x float-right"></button>
           </nuxt-link>
@@ -54,6 +59,10 @@ export default {
     async loadMore(key) {
       let { data } = await this.$axios.$get(key);
       return (this.topics = { ...this.topics, ...data });
+    },
+    async deleteTopic(id) {
+      await this.$axios.$delete(`/topics/${id}`);
+      this.$router.push("/");
     }
   }
 };
@@ -63,7 +72,8 @@ export default {
   border-left: 10px solid white;
   padding: 0 10px 0 10px;
 }
-.btn-outline-success {
+.btn-outline-success,
+.btn-outline-danger {
   border: none;
 }
 </style>
